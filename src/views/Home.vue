@@ -74,9 +74,5 @@ loadUsers(){axios.get('https://jsonplaceholder.typicode.com/users').then(
 .usersShowing{
   margin-top:70%;
 }
-#container strong {
-  font-size: 20px;
-  line-height: 26px;
-}
 
 </style>
