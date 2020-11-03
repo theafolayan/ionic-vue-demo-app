@@ -79,11 +79,4 @@ loadUsers(){axios.get('https://jsonplaceholder.typicode.com/users').then(
   line-height: 26px;
 }
 
-#container p {
-  font-size: 16px;
-  line-height: 22px;
-  color: #8c8c8c;
-  margin: 0;
-}
-
 </style>
