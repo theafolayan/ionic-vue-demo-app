@@ -2,20 +2,27 @@
   <ion-page>
     <ion-header :translucent="true">
       <ion-toolbar>
-        <ion-title>Blank</ion-title>
+        <ion-title>Demo Application</ion-title>
       </ion-toolbar>
     </ion-header>
     
     <ion-content :fullscreen="true">
       <ion-header collapse="condense">
         <ion-toolbar>
-          <ion-title size="large">Blank</ion-title>
+          <ion-title size="small">Demo Application</ion-title>
         </ion-toolbar>
       </ion-header>
     
-      <div id="container">
-        <strong>Ready to create an app?</strong>
-        <p>Start with Ionic <a target="_blank" rel="noopener noreferrer" href="https://ionicframework.com/docs/components">UI Components</a></p>
+      <div id="container" v-bind:class="{ 'top-margin': !users, 'usersShowing': users }">
+     
+          <ion-button v-show="!users" @click="loadUsers()" expand="block">View All Users</ion-button>
+        <div v-show="users">  <strong> All Users</strong>  </div>
+   <ion-list>
+    <ion-item v-for="user in users" v-bind:key="user.id">
+      <ion-label>{{user.name}} </ion-label>
+    </ion-item>
+
+  </ion-list>
       </div>
     </ion-content>
   </ion-page>
@@ -24,6 +31,7 @@
 <script lang="ts">
 import { IonContent, IonHeader, IonPage, IonTitle, IonToolbar } from '@ionic/vue';
 import { defineComponent } from 'vue';
+import axios from 'axios';
 
 export default defineComponent({
   name: 'Home',
@@ -33,8 +41,21 @@ export default defineComponent({
     IonPage,
     IonTitle,
     IonToolbar
+  },
+  data(){
+    return {users : null}
+  },
+  methods: {
+loadUsers(){axios.get('https://jsonplaceholder.typicode.com/users').then(
+    response => {
+      // console.log(response.data[0]);
+      this.users = response.data
+    }) 
+    }
+  },
+  
   }
-});
+)
 </script>
 
 <style scoped>
@@ -44,10 +65,15 @@ export default defineComponent({
   position: absolute;
   left: 0;
   right: 0;
-  top: 50%;
+ 
   transform: translateY(-50%);
+} 
+.top-margin{
+ top: 20%;
 }
-
+.usersShowing{
+  margin-top:70%;
+}
 #container strong {
   font-size: 20px;
   line-height: 26px;
@@ -56,9 +82,7 @@ export default defineComponent({
 #container p {
   font-size: 16px;
   line-height: 22px;
-  
   color: #8c8c8c;
-  
   margin: 0;
 }
 
