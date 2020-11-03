@@ -16,11 +16,11 @@
       <div id="container" v-bind:class="{ 'top-margin': !users, 'usersShowing': users }">
      
           <ion-button v-show="!users" @click="loadUsers()" expand="block">View All Users</ion-button>
-        <div v-show="users">  <strong> All Users</strong>  </div>
+        <strong v-show="users"> All Users</strong>
    <ion-list>
-    <ion-item v-for="user in users" v-bind:key="user.id">
-      <ion-label>{{user.name}} </ion-label>
-    </ion-item>
+      <ion-item v-for="user in users" v-bind:key="user.id">
+        <ion-label>{{user.name}} </ion-label>
+      </ion-item>
 
   </ion-list>
   <ion-button v-show="users" @click="users = null" color="danger">Hide Users</ion-button>
@@ -61,7 +61,6 @@ loadUsers(){axios.get('https://jsonplaceholder.typicode.com/users').then(
 <style scoped>
 #container {
   text-align: center;
-  
   position: absolute;
   left: 0;
   right: 0;
