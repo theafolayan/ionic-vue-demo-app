@@ -44,13 +44,12 @@ export default defineComponent({
     IonToolbar
   },
   data(){
-    return {users : null}
+    return {users : null} // sets users to null on instantiation
   },
   methods: {
 loadUsers(){axios.get('https://jsonplaceholder.typicode.com/users').then(
     response => {
-      // console.log(response.data[0]);
-      this.users = response.data
+      this.users = response.data // assigns the data from api call to the users variable 
     }) 
     }
   },
@@ -87,7 +86,4 @@ loadUsers(){axios.get('https://jsonplaceholder.typicode.com/users').then(
   margin: 0;
 }
 
-#container a {
-  text-decoration: none;
-}
 </style>
