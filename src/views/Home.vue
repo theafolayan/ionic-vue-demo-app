@@ -23,6 +23,7 @@
     </ion-item>
 
   </ion-list>
+  <ion-button v-show="users" @click="users = null" color="danger">Hide Users</ion-button>
       </div>
     </ion-content>
   </ion-page>
