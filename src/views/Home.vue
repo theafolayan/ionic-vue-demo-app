@@ -22,7 +22,8 @@
         >
         <strong v-show="users"> All Users</strong>
         <ion-list>
-          <ion-item v-for="user in users" v-bind:key="user.id">
+          <!-- Loops through the users array -->
+          <ion-item v-for="user in users" v-bind:key="user.id"> 
             <ion-label>{{ user.name }} </ion-label>
           </ion-item>
         </ion-list>
